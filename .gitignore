@@ -1,0 +1,6 @@
+_site/
+node_modules/
+.DS_Store
+
+# Local career-switch working folder — never commit (repo is public)
+career/

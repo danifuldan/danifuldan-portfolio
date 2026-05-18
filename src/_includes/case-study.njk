@@ -1,0 +1,63 @@
+---
+layout: base.njk
+---
+<article class="case-study">
+  <header class="case-study-header">
+    <h1>{{ title }}</h1>
+    <p class="case-study-description">{{ description }}</p>
+    <dl class="case-study-meta">
+      {% if role %}<div><dt>Role</dt><dd>{{ role }}</dd></div>{% endif %}
+      {% if timeline %}<div><dt>Timeline</dt><dd>{{ timeline }}</dd></div>{% endif %}
+      {% if outcome %}<div><dt>Outcome</dt><dd>{{ outcome }}</dd></div>{% endif %}
+    </dl>
+  </header>
+
+  <div class="case-study-layout">
+    <aside class="case-study-nav" aria-label="On this page">
+      <p class="case-study-nav-label">On this page</p>
+      <ol class="case-study-toc"></ol>
+    </aside>
+
+    <div class="case-study-body">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>
+
+<script>
+  (function () {
+    const body = document.querySelector(".case-study-body");
+    const toc = document.querySelector(".case-study-toc");
+    if (!body || !toc) return;
+    const headings = body.querySelectorAll("h2, h3");
+    if (headings.length === 0) {
+      document.querySelector(".case-study-nav").style.display = "none";
+      return;
+    }
+    headings.forEach((h) => {
+      const li = document.createElement("li");
+      li.className = "toc-" + h.tagName.toLowerCase();
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      toc.appendChild(li);
+    });
+
+    // Highlight current section on scroll
+    const links = toc.querySelectorAll("a");
+    const linkMap = new Map();
+    links.forEach((a) => linkMap.set(a.getAttribute("href").slice(1), a));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = linkMap.get(entry.target.id);
+          if (!link) return;
+          if (entry.isIntersecting) link.classList.add("active");
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+    headings.forEach((h) => observer.observe(h));
+  })();
+</script>

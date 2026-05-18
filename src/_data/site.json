@@ -1,0 +1,17 @@
+{
+  "title": "Daniful Dan — I build software products",
+  "author": "Daniful Dan",
+  "email": "hi@danifuldan.com",
+  "url": "https://danifuldan.com",
+  "description": "I find problems people have stopped noticing and ship the software that fixes them. Currently building Budget Itemizer.",
+  "palette": {
+    "source": "https://coolors.co/231123-82204a-558c8c-e8db7d-eff7ff",
+    "colors": {
+      "eggplant": "#231123",
+      "berry": "#82204A",
+      "teal": "#558C8C",
+      "gold": "#E8DB7D",
+      "ice": "#EFF7FF"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: false
+---
+<section class="hero">
+  <h1>I find problems people have stopped noticing — and build what fixes them.</h1>
+  <p>I own the product decisions and ship the thing.</p>
+</section>
+
+<section class="work-list">
+  <h2>Selected work</h2>
+  {%- for project in collections.work | sort(false, false, 'data.order') %}
+  <a href="{{ project.url }}" class="work-card">
+    <div class="work-card-text">
+      <h3>{{ project.data.title }}</h3>
+      <p>{{ project.data.description }}</p>
+      <span class="work-card-meta">{{ project.data.role }} · {{ project.data.timeline }}</span>
+    </div>
+  </a>
+  {%- endfor %}
+</section>
