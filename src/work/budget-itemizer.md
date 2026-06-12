@@ -6,6 +6,7 @@ timeline: Feb 2026 – present
 outcome: Receipt-to-budget pipeline that matches totals exactly, runs entirely on-device
 order: 1
 thumbnail: /img/budget-itemizer/ready-to-import.png
+repo: https://github.com/danifuldan/budget-itemizer
 ---
 
 ## The problem

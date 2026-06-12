@@ -3,7 +3,7 @@ layout: base.njk
 ---
 <article class="case-study">
   <header class="case-study-header">
-    <h1>{{ title }}</h1>
+    <h1>{% if repo %}<a class="case-study-repo-link" href="{{ repo }}">{{ title }}</a>{% else %}{{ title }}{% endif %}</h1>
     <p class="case-study-description">{{ description }}</p>
     <dl class="case-study-meta">
       {% if role %}<div><dt>Role</dt><dd>{{ role }}</dd></div>{% endif %}
