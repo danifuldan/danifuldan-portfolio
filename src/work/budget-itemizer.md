@@ -1,7 +1,7 @@
 ---
 title: Budget Itemizer
 description: A free, local-first desktop app that turns receipts into itemized YNAB transactions — no cloud, no subscription, no manual data entry.
-role: Solo designer & developer (with Claude Code)
+role: Solo product — vision, design & build (with Claude Code)
 timeline: Feb 2026 – present
 outcome: Receipt-to-budget pipeline that matches totals exactly, runs entirely on-device
 order: 1
