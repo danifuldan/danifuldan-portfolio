@@ -1,7 +1,7 @@
 ---
 title: Order Form Redesign
 description: Redesigned a cross-team order intake into a structured form that captures fulfillment context up front — so orders go through on the first pass instead of stalling for follow-up.
-role: Operations & process designer
+role: Problem definition & solution design
 timeline: 2022 – present
 outcome: ~24% reduction in order processing time
 order: 3

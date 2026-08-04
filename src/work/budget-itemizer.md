@@ -3,7 +3,7 @@ title: Budget Itemizer
 description: A free, local-first desktop app that turns receipts into itemized YNAB transactions — no cloud, no subscription, no manual data entry.
 role: Solo product — vision, design & build (with Claude Code)
 timeline: Feb 2026 – present
-outcome: Receipt-to-budget pipeline that matches totals exactly, runs entirely on-device
+outcome: Working app in development — not yet released
 order: 1
 thumbnail: /img/budget-itemizer/ready-to-import.png
 repo: https://github.com/danifuldan/budget-itemizer
@@ -110,7 +110,7 @@ I also added matching across accounts, so picking the wrong one wouldn't block t
 
 I wanted the app to work however the user wanted: foreground or background. So while it started as a drag-and-drop app you actively engage with, I added a folder watching feature so you can just close the application window, save files to the right location, and it works in the background.
 
-## Implementation & iteration
+## Key build decisions
 
 ### Why I dropped Apple's Foundation Model
 
