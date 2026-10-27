@@ -34,6 +34,7 @@ layout: base.njk
       document.querySelector(".case-study-nav").style.display = "none";
       return;
     }
+    const items = []; // { heading, link } pairs in document order
     headings.forEach((h) => {
       const li = document.createElement("li");
       li.className = "toc-" + h.tagName.toLowerCase();
@@ -42,22 +43,54 @@ layout: base.njk
       a.textContent = h.textContent;
       li.appendChild(a);
       toc.appendChild(li);
+      items.push({ heading: h, link: a });
     });
 
-    // Highlight current section on scroll
-    const links = toc.querySelectorAll("a");
-    const linkMap = new Map();
-    links.forEach((a) => linkMap.set(a.getAttribute("href").slice(1), a));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const link = linkMap.get(entry.target.id);
-          if (!link) return;
-          if (entry.isIntersecting) link.classList.add("active");
-        });
-      },
-      { rootMargin: "-20% 0px -70% 0px" }
-    );
-    headings.forEach((h) => observer.observe(h));
+    // Highlight the section being read. "Current" is the last heading whose
+    // top has crossed an activation line. The line sits 20% down the viewport
+    // for most of the page. Over the final 80% of a viewport's worth of
+    // scrolling it slides down to the bottom edge, so that headings in the
+    // last screen, which can never reach the 20% line because the page stops
+    // scrolling, still each get their turn and the last heading is current
+    // exactly at the bottom.
+    //
+    // This is computed from scroll position rather than with an
+    // IntersectionObserver band. The previous observer-based version had
+    // three faults, measured 2026-10-27 with a headless-Chrome scroll sweep
+    // over the case studies: it only ever added the active class and never
+    // removed it, so highlights accumulated; its 10%-tall band was skipped
+    // entirely when one scroll step moved a heading across it, so 7 of 17
+    // headings on the Budget Itemizer page never lit; and headings in the
+    // last screen could never enter the band at all.
+    let current = null;
+    function update() {
+      const vh = window.innerHeight;
+      const maxScroll = Math.max(0, document.documentElement.scrollHeight - vh);
+      const remaining = maxScroll - window.scrollY;
+      const line = 0.2 * vh + Math.max(0, 0.8 * vh - remaining);
+      let next = null;
+      for (const item of items) {
+        if (item.heading.getBoundingClientRect().top <= line) next = item;
+      }
+      if (next === current) return;
+      if (current) current.link.classList.remove("active");
+      if (next) next.link.classList.add("active");
+      current = next;
+    }
+
+    // One update per frame while scrolling; passive so it never delays scroll.
+    let scheduled = false;
+    function schedule() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => {
+        scheduled = false;
+        update();
+      });
+    }
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("load", schedule); // images shift headings once they size
+    update();
   })();
 </script>
