@@ -4,9 +4,17 @@ Editable sources for the diagrams used in case studies. This folder is not
 published; Eleventy only copies `src/`.
 
 Workflow: open a `.excalidraw` file at https://excalidraw.com (Open → file),
-edit, then Export image → PNG at scale 2 with background on, and save the PNG
-under `src/img/<case-study>/`. The existing order-form PNGs are 1370px wide;
-match that for consistency.
+edit, save the file back here, then export a PNG into `src/img/<case-study>/`.
+
+Export by hand: Export image → PNG, scale 2x, background on. Or scripted,
+which drives excalidraw.com's own export dialog in headless Chrome (needs
+Playwright; the budget-itemizer project has it installed):
+
+    NODE_PATH=~/Dev/budget-itemizer/node_modules node diagrams/export-excalidraw.js \
+      diagrams/inventory-ops-pipeline.excalidraw /tmp/preview.png src/img/inventory-ops/pipeline.png
+
+Keep canvases roughly 700–800 units wide so labels display at the same size
+as the order-form diagrams (drawn ~685 wide) in the ~720px case-study column.
 
 - `inventory-ops-pipeline.excalidraw` — the Plan → Order → Inbound → Receive →
   Monitor stages, with At Risk as the overstock side state.

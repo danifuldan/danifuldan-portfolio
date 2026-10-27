@@ -5,6 +5,10 @@ Element shapes and style values are copied from Daniel's existing
 'order form workflows.excalidraw' (inspected 2026-10-27): fontFamily 5,
 fontSize 20, roughness 1, strokeWidth 2, roundness type 3 on rectangles,
 type 2 on arrows, pastel solid fills, unbound arrows.
+
+Layouts are vertical and about 800 canvas units wide. The case-study column
+on the site is ~720 CSS px and the order-form diagrams were drawn ~685 units
+wide, so this width keeps label sizes on the page consistent with those.
 """
 import json, random, sys, time
 from pathlib import Path
@@ -47,6 +51,8 @@ def text(x, y, s, size=20, align="left", color="#1e1e1e"):
     h = LINE_H * (size / 20) * len(lines)
     if align == "center":
         x = x - w / 2
+    elif align == "right":
+        x = x - w
     return base("text", x, y, w, h, text=s, originalText=s, fontSize=size,
                 fontFamily=5, textAlign=align, verticalAlign="top", containerId=None,
                 autoResize=True, lineHeight=1.25, strokeColor=color)
@@ -65,7 +71,7 @@ def arrow(x1, y1, x2, y2, head="arrow", stroke="solid"):
 
 
 def labeled_box(cx, cy, w, h, title, sub=None, fill="transparent", stroke="solid"):
-    """Box centered at (cx, cy) with a bold-ish title and optional smaller subtitle."""
+    """Box centered at (cx, cy) with a title and optional smaller subtitle."""
     els = [rect(cx - w / 2, cy - h / 2, w, h, fill, stroke)]
     if sub:
         sub_lines = sub.count("\n") + 1
@@ -92,10 +98,12 @@ def doc(elements):
 
 # Pastels from the reference file plus Excalidraw's standard palette.
 PINK, GREEN, BLUE, YELLOW, GREY = "#ffc9c9", "#b2f2bb", "#a5d8ff", "#ffec99", "#e9ecef"
+MUTED = "#5c5c5c"
+
 
 # ---------------------------------------------------------------- Diagram 1
-# The pipeline a SKU moves through. Labels under each stage are the operator's
-# job there, taken from the per-SKU checklist in the brain dump.
+# The pipeline a SKU moves through, stacked top to bottom. Labels under each
+# stage are the operator's job there, from the per-SKU checklist.
 def pipeline():
     els = []
     stages = [
@@ -105,100 +113,100 @@ def pipeline():
         ("Receive", "verify received\nvs. shipped", GREEN),
         ("Monitor", "no open tasks;\nwatch demand", GREY),
     ]
-    W, H, GAP = 190, 120, 60
-    y = 200
-    x0 = 100
-    centers = []
+    W, H, GAP = 300, 100, 46
+    cx, y0 = 360, 40
+    cys = []
     for i, (t, sub, fill) in enumerate(stages):
-        cx = x0 + W / 2 + i * (W + GAP)
-        centers.append(cx)
-        els += labeled_box(cx, y, W, H, t, sub, fill)
+        cy = y0 + H / 2 + i * (H + GAP)
+        cys.append(cy)
+        els += labeled_box(cx, cy, W, H, t, sub, fill)
         if i > 0:
-            els.append(arrow(cx - W / 2 - GAP + 6, y, cx - W / 2 - 6, y))
+            els.append(arrow(cx, cy - H / 2 - GAP + 6, cx, cy - H / 2 - 6))
 
-    # Monitor loops back to Plan when stock drops below the reorder point.
-    top = y - H / 2
-    loop_y = top - 70
-    els.append(arrow(centers[-1], top - 4, centers[-1], loop_y))          # up
-    els.append(arrow(centers[-1], loop_y, centers[0], loop_y, head=None))  # across
-    els.append(arrow(centers[0], loop_y, centers[0], top - 4))            # down
-    els.append(text((centers[0] + centers[-1]) / 2, loop_y - 34,
-                    "stock falls below the reorder point → back to Plan", 16, "center", "#5c5c5c"))
+    # Monitor loops back to Plan when stock drops below the reorder point:
+    # out of Monitor's left side, up the left margin, into Plan's left side.
+    lx = cx - W / 2 - 60
+    els.append(arrow(cx - W / 2 - 4, cys[-1], lx, cys[-1], head=None))
+    els.append(arrow(lx, cys[-1], lx, cys[0], head=None))
+    els.append(arrow(lx, cys[0], cx - W / 2 - 4, cys[0]))
+    els.append(text(lx - 12, (cys[0] + cys[-1]) / 2 - 40,
+                    "stock falls\nbelow the\nreorder point:\nback to Plan", 16, "right", MUTED))
 
     # At Risk: a side state off Monitor, dotted like the reference's limbo box.
-    ar_cy = y + H / 2 + 110
-    els += labeled_box(centers[-1], ar_cy, W, 90, "At risk", "more stock than\ndemand supports", PINK, "dotted")
-    els.append(arrow(centers[-1], y + H / 2 + 4, centers[-1], ar_cy - 45 - 4))
+    arx = cx + W / 2 + 60 + 110
+    els += labeled_box(arx, cys[-1], 220, 90, "At risk", "more stock than\ndemand supports", PINK, "dotted")
+    els.append(arrow(cx + W / 2 + 4, cys[-1], arx - 110 - 6, cys[-1]))
 
     # Caption.
-    els.append(text(x0, ar_cy + 90, "Each SKU being monitored sits in exactly one stage. The tool lists what is\n"
-                    "waiting on you at every stage; the dashboard is the union of those lists.",
-                    16, "left", "#5c5c5c"))
+    bottom = cys[-1] + H / 2 + 40
+    els.append(text(lx - 150, bottom,
+                    "Each monitored SKU sits in exactly one stage. The tool lists what is\n"
+                    "waiting on you at each stage; the dashboard is the union of those lists.",
+                    16, "left", MUTED))
     return doc(els)
 
 
 # ---------------------------------------------------------------- Diagram 2
-# Where data comes from and where it goes.
+# Where data comes from and where it goes, top to bottom.
 def dataflow():
     els = []
-    # Column x-centers
-    cx_in, cx_mid, cx_pages, cx_out = 180, 520, 880, 1240
-    W, H = 220, 80
+    cx = 400
 
-    # Inputs (left)
-    els.append(text(cx_in, 60, "Inputs", 20, "center"))
-    inputs = ["inventory report", "orders report", "receiving report"]
-    in_ys = [160, 280, 400]
-    for s, yy in zip(inputs, in_ys):
-        els += labeled_box(cx_in, yy, W, H, s, None, YELLOW)
-    els.append(text(cx_in, 460, "downloaded from the\nwarehouse management system", 16, "center", "#5c5c5c"))
+    # Inputs: three reports side by side across the top.
+    W_in, H_in = 220, 70
+    in_xs = [cx - 250, cx, cx + 250]
+    in_y = 120
+    els.append(text(cx, 40, "Inputs", 20, "center"))
+    for s, x in zip(["inventory report", "orders report", "receiving report"], in_xs):
+        els += labeled_box(x, in_y, W_in, H_in, s, None, YELLOW)
+    els.append(text(cx, in_y + H_in / 2 + 8, "downloaded from the warehouse management system", 16, "center", MUTED))
 
-    # Middle: import -> database
-    els += labeled_box(cx_mid, 160, W, H, "Import page", "auto-import unless\nsomething is wrong", BLUE)
-    els += labeled_box(cx_mid, 400, W, H + 20, "Local database", "SQLite, on this\nmachine only", GREY)
-    for yy in in_ys:  # every report feeds the one import page
-        els.append(arrow(cx_in + W / 2 + 6, yy, cx_mid - W / 2 - 6, 160))
-    els.append(arrow(cx_mid, 160 + H / 2 + 4, cx_mid, 400 - (H + 20) / 2 - 4))
+    # Import page -> local database.
+    imp_y, db_y = 270, 420
+    els += labeled_box(cx, imp_y, 280, 80, "Import page", "auto-import unless\nsomething is wrong", BLUE)
+    for x in in_xs:
+        els.append(arrow(x, in_y + H_in / 2 + 30, cx + (x - cx) * 0.4, imp_y - 40 - 6))
+    els += labeled_box(cx, db_y, 280, 90, "Local database", "SQLite, on this\nmachine only", GREY)
+    els.append(arrow(cx, imp_y + 40 + 6, cx, db_y - 45 - 6))
 
-    # Pages (working surfaces) — right of database, inside a dashed container so
-    # the output arrows have a visible origin: the group of pages, not one page.
+    # Working pages: a 2x2 grid inside a dashed container.
     pages = [
         ("Inventory", "SKUs by stage;\ndetail and action panes"),
         ("SKU management", "monitored? needs PO?\nnotes"),
         ("SKU logic", "equivalents and kits"),
         ("Vendors", "contacts, part numbers,\nship-to"),
     ]
-    p_ys = [180, 295, 410, 525]
-    pad = 22
-    c_left, c_right = cx_pages - W / 2 - pad, cx_pages + W / 2 + pad
-    c_top, c_bottom = 85, p_ys[-1] + 45 + pad
+    PW, PH = 310, 90
+    c_top = db_y + 45 + 60
+    grid = [(cx - 170, c_top + 90), (cx + 170, c_top + 90), (cx - 170, c_top + 200), (cx + 170, c_top + 200)]
+    c_left, c_right = cx - 170 - PW / 2 - 20, cx + 170 + PW / 2 + 20
+    c_bottom = c_top + 200 + PH / 2 + 20
     els.append(rect(c_left, c_top, c_right - c_left, c_bottom - c_top, "transparent", "dashed"))
-    els.append(text(cx_pages, c_top + 10, "Working pages", 20, "center"))
-    for (t, sub), yy in zip(pages, p_ys):
-        els += labeled_box(cx_pages, yy, W, 90, t, sub, GREEN)
-    # database -> pages
-    for yy in p_ys:
-        els.append(arrow(cx_mid + W / 2 + 6, 400, c_left - 6, yy))
+    els.append(text(cx, c_top + 8, "Working pages", 20, "center"))
+    for (t, sub), (x, y) in zip(pages, grid):
+        els += labeled_box(x, y, PW, PH, t, sub, GREEN)
+    els.append(arrow(cx, db_y + 45 + 6, cx, c_top - 6))
 
-    # Outputs (far right), fed from the pages container.
-    c_mid_y = (c_top + c_bottom) / 2
-    els.append(text(cx_out, 60, "Outputs", 20, "center"))
+    # Outputs: three side by side along the bottom, fed from the pages group.
     outs = [
-        ("Dashboard", "what's waiting on you"),
-        ("Stock-level email", "high-value components:\non hand, on order, notes"),
-        ("Forecasting", "planned vs. actual\npurchasing, sales forecast"),
+        ("Dashboard", "what's waiting\non you"),
+        ("Stock-level email", "high-value parts:\non hand, on order"),
+        ("Forecasting", "planned vs. actual\npurchasing; sales"),
     ]
-    o_ys = [c_mid_y - 150, c_mid_y, c_mid_y + 150]
-    for (t, sub), yy in zip(outs, o_ys):
-        els += labeled_box(cx_out, yy, W, 90, t, sub, PINK)
-    for yy in o_ys:
-        els.append(arrow(c_right + 6, c_mid_y, cx_out - W / 2 - 6, yy))
+    OW, OH = 230, 90
+    out_y = c_bottom + 110
+    out_xs = [cx - 250, cx, cx + 250]
+    for (t, sub), x in zip(outs, out_xs):
+        els += labeled_box(x, out_y, OW, OH, t, sub, PINK)
+        els.append(arrow(cx + (x - cx) * 0.3, c_bottom + 6, x, out_y - OH / 2 - 6))
+    els.append(text(cx + 250 + OW / 2, out_y - OH / 2 - 34, "Outputs", 20, "right"))
 
     # Outer boundary: everything is on one machine.
-    bottom = c_bottom + 50
-    els.append(rect(40, 20, cx_out + W / 2 + 40 - 40, bottom - 20, "transparent", "dashed"))
-    els.append(text(60, bottom - 32, "everything inside the dashed line runs on one machine; nothing is exposed to the internet",
-                    16, "left", "#5c5c5c"))
+    bx, by, bw = 20, 10, 2 * (cx - 20)
+    bh = out_y + OH / 2 + 60 - by
+    els.append(rect(bx, by, bw, bh, "transparent", "dashed"))
+    els.append(text(cx, by + bh - 36, "everything inside the dashed line runs on one machine; nothing is exposed to the internet",
+                    16, "center", MUTED))
     return doc(els)
 
 
