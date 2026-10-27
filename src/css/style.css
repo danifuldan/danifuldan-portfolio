@@ -496,6 +496,12 @@ main {
   margin-bottom: 12px;
 }
 
+/* about.md headings get markdown-it-anchor links; keep them heading-colored,
+   not accent-colored like body links. */
+.about h2 a {
+  color: inherit;
+}
+
 .about p {
   margin-bottom: 16px;
   line-height: 1.65;
@@ -522,30 +528,6 @@ main {
   color: var(--accent);
 }
 
-/* ─── Footer ─── */
-.site-footer {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 32px 24px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  transition: color 0.15s;
-}
-
-.footer-links a:hover {
-  color: var(--heading);
-}
-
 /* ─── Responsive ─── */
 @media (max-width: 600px) {
   .hero h1 { font-size: 1.7rem; }
@@ -553,14 +535,8 @@ main {
   .case-study-meta { flex-direction: column; gap: 16px; }
   main { padding: 0 16px 60px; }
   .site-header { padding: 24px 16px 36px; }
-  .site-footer { padding: 24px 16px; }
   /* Tighter spacing in nav so name + dropdown + avatar all fit */
   .nav-links { gap: 16px; }
-  /* Footer links stack rather than crowd */
-  .footer-links {
-    flex-wrap: wrap;
-    gap: 12px 20px;
-  }
 }
 
 @media (max-width: 480px) {

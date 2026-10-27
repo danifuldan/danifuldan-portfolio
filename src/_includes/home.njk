@@ -1,10 +1,13 @@
 ---
 layout: base.njk
-title: false
 ---
+{#
+  Home page layout. The prose (headline + tagline) comes from index.md so it
+  can be edited as Markdown; the project cards are generated from the
+  case-study front matter and so live here, in the template.
+#}
 <section class="hero">
-  <h1>I find problems people have stopped noticing — and build what fixes them.</h1>
-  <p>I own the product decisions and ship the thing.</p>
+  {{ content | safe }}
 </section>
 
 <section class="work-list">
