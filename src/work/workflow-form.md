@@ -4,7 +4,7 @@ description: Redesigned a cross-team order intake into a structured form that ca
 role: Problem definition & solution design
 timeline: 2022 – present
 outcome: ~24% reduction in order processing time
-order: 3
+order: 1
 thumbnail: /img/workflow-form-thumb.png
 ---
 

@@ -8,7 +8,7 @@ I build software products. Operations is where I learned to spot the problems wo
 
 I started building fixes — first as process improvements, then internal tools, then software products. The constant: I find the gap between how a system *should* work and how it *actually* does, and I build the thing that closes it.
 
-Right now I'm building [Budget Itemizer](/work/budget-itemizer/) — a local-first desktop app that turns receipts into YNAB budget splits. It's the kind of tool I wish existed: fast, private, no subscription, no cloud dependency. It runs entirely on your machine.
+At work, I'm building [Inventory Ops](/work/inventory-ops/) — an internal ERP that runs locally to help streamline the inventory management process. In my free time, I'm building [Budget Itemizer](/work/budget-itemizer/) — a local-first desktop app that turns receipts into YNAB budget splits. It's the kind of tool I wish existed: fast, private, no subscription, no cloud dependency. It runs entirely on your machine.
 
 ## What I bring
 
@@ -19,8 +19,5 @@ Right now I'm building [Budget Itemizer](/work/budget-itemizer/) — a local-fir
 
 ## Get in touch
 
-I'm looking for early/0→1 product roles — founding PM, product owner, early product — where I can own a problem and ship the software for it. If that sounds useful, let's talk.
+I'm looking for roles where I own a problem end-to-end and build the fix — whether that's ops, systems, or product. If that sounds useful, let's [talk](mailto:{{ site.email }}).
 
-[Substack](https://danifuldan.substack.com) ·
-[GitHub](https://github.com/danifuldan) ·
-[Twitter](https://twitter.com/danifuldan)

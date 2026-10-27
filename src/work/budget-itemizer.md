@@ -4,7 +4,7 @@ description: A free, local-first desktop app that turns receipts into itemized Y
 role: Solo product — vision, design & build (with Claude Code)
 timeline: Feb 2026 – present
 outcome: Working app in development — not yet released
-order: 1
+order: 3
 thumbnail: /img/budget-itemizer/ready-to-import.png
 repo: https://github.com/danifuldan/budget-itemizer
 ---
