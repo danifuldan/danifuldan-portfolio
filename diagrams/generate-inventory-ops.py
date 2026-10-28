@@ -80,7 +80,8 @@ def labeled_box(cx, cy, w, h, title, sub=None, fill="transparent", stroke="solid
         els.append(text(cx, ty, title, 20, "center"))
         els.append(text(cx, ty + LINE_H + 8, sub, 16, "center", "#5c5c5c"))
     else:
-        els.append(text(cx, cy - LINE_H / 2, title, 20, "center"))
+        n = title.count("\n") + 1
+        els.append(text(cx, cy - n * LINE_H / 2, title, 20, "center"))
     return els
 
 
@@ -206,9 +207,45 @@ def dataflow():
     return doc(els)
 
 
+# ---------------------------------------------------------------- Diagram 0
+# The "before": the spreadsheet loop. Drawn in the register of the order-form
+# before diagram (2026-10-28 look at src/img/workflow-form/before.png): a few
+# single-label boxes, green start, pink for the steps that hurt, dotted pink
+# for where things trail off. Rough draft from the brain dumps; Daniel will
+# correct the steps.
+def before():
+    els = []
+    cx, W, H = 520, 340, 90
+    lx, LW = 160, 280
+    ys = {"A": 80, "B": 250, "E": 420, "F": 590, "G": 780}
+    els += labeled_box(cx, ys["A"], W, H, "new reports in\nthe warehouse portal", None, GREEN)
+    els += labeled_box(cx, ys["B"], W, H, "download, paste\ninto the sheet")
+    els += labeled_box(cx, ys["E"], W, H, "read off what\nneeds ordering")
+    els += labeled_box(cx, ys["F"], W, H, "talk it over;\nplace orders")
+    els += labeled_box(cx, ys["G"], W, H, "status, notes, tracking:\nin my head and email", None, PINK, "dotted")
+    for a, b in [("A", "B"), ("B", "E"), ("E", "F"), ("F", "G")]:
+        els.append(arrow(cx, ys[a] + H / 2 + 6, cx, ys[b] - H / 2 - 6))
+
+    # The breakage loop off the paste step: new SKU -> patch formulas -> paste again.
+    els += labeled_box(lx, ys["B"], LW, H, "a new SKU\nbreaks the sheet", None, PINK)
+    els += labeled_box(lx, ys["B"] + 170, LW, H, "patch the formulas", None, PINK)
+    els.append(arrow(cx - W / 2 - 6, ys["B"], lx + LW / 2 + 6, ys["B"]))
+    els.append(arrow(lx, ys["B"] + H / 2 + 6, lx, ys["B"] + 170 - H / 2 - 6))
+    els.append(arrow(lx + LW / 2 + 6, ys["B"] + 170 - 10, cx - W / 2 - 6, ys["B"] + H / 2 + 10))
+
+    # And the whole thing runs again next time.
+    rx = cx + W / 2 + 70
+    els.append(arrow(cx + W / 2 + 4, ys["G"], rx, ys["G"], head=None))
+    els.append(arrow(rx, ys["G"], rx, ys["A"], head=None))
+    els.append(arrow(rx, ys["A"], cx + W / 2 + 4, ys["A"]))
+    els.append(text(rx + 12, (ys["A"] + ys["G"]) / 2 - 12, "next\ntime", 16, "left", MUTED))
+    return doc(els)
+
+
 if __name__ == "__main__":
     out = Path(sys.argv[1])
     out.mkdir(parents=True, exist_ok=True)
+    (out / "inventory-ops-before.excalidraw").write_text(json.dumps(before(), indent=1))
     (out / "inventory-ops-pipeline.excalidraw").write_text(json.dumps(pipeline(), indent=1))
     (out / "inventory-ops-dataflow.excalidraw").write_text(json.dumps(dataflow(), indent=1))
     print("wrote", out)

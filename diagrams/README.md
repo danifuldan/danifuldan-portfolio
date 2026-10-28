@@ -16,6 +16,8 @@ Playwright; the budget-itemizer project has it installed):
 Keep canvases roughly 700–800 units wide so labels display at the same size
 as the order-form diagrams (drawn ~685 wide) in the ~720px case-study column.
 
+- `inventory-ops-before.excalidraw` — the spreadsheet loop the tool replaced;
+  rough draft from the brain dumps, steps to be corrected by Daniel.
 - `inventory-ops-pipeline.excalidraw` — the Plan → Order → Inbound → Receive →
   Monitor stages, with At Risk as the overstock side state.
 - `inventory-ops-dataflow.excalidraw` — reports in, local database, working
