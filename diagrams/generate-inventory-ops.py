@@ -233,6 +233,12 @@ def before():
     els.append(arrow(lx, ys["B"] + H / 2 + 6, lx, ys["B"] + 170 - H / 2 - 6))
     els.append(arrow(lx + LW / 2 + 6, ys["B"] + 170 - 10, cx - W / 2 - 6, ys["B"] + H / 2 + 10))
 
+    # The second output of the sheet: the stock-level email, assembled by hand
+    # (Daniel, 2026-10-28). Branches off the read-off step beside the orders path.
+    ey = ys["F"]
+    els += labeled_box(lx, ey, LW, H, "stock-level email,\nassembled by hand")
+    els.append(arrow(cx - W / 2 - 6, ys["E"] + 20, lx + LW / 2 + 6, ey - 20))
+
     # And the whole thing runs again next time.
     rx = cx + W / 2 + 70
     els.append(arrow(cx + W / 2 + 4, ys["G"], rx, ys["G"], head=None))

@@ -29,7 +29,7 @@
    "versionNonce": 214325272,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -57,7 +57,7 @@
    "versionNonce": 818889645,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "new reports in\nthe warehouse portal",
@@ -96,7 +96,7 @@
    "versionNonce": 1753860383,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -124,7 +124,7 @@
    "versionNonce": 976333533,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "download, paste\ninto the sheet",
@@ -163,7 +163,7 @@
    "versionNonce": 118912239,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -191,7 +191,7 @@
    "versionNonce": 1809965195,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "read off what\nneeds ordering",
@@ -230,7 +230,7 @@
    "versionNonce": 175272517,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -258,7 +258,7 @@
    "versionNonce": 1860075684,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "talk it over;\nplace orders",
@@ -297,7 +297,7 @@
    "versionNonce": 2124846788,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -325,7 +325,7 @@
    "versionNonce": 1098573820,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "status, notes, tracking:\nin my head and email",
@@ -364,7 +364,7 @@
    "versionNonce": 742664763,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -409,7 +409,7 @@
    "versionNonce": 2084319136,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -454,7 +454,7 @@
    "versionNonce": 1751085487,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -499,7 +499,7 @@
    "versionNonce": 1114990627,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -544,7 +544,7 @@
    "versionNonce": 1369091053,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -572,7 +572,7 @@
    "versionNonce": 49513780,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "a new SKU\nbreaks the sheet",
@@ -611,7 +611,7 @@
    "versionNonce": 921892100,
    "isDeleted": false,
    "boundElements": [],
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false
   },
@@ -639,7 +639,7 @@
    "versionNonce": 1315394242,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "patch the formulas",
@@ -678,7 +678,7 @@
    "versionNonce": 1158767540,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -723,7 +723,7 @@
    "versionNonce": 1307977833,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -768,7 +768,7 @@
    "versionNonce": 1677612433,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -789,11 +789,11 @@
   },
   {
    "id": "inv022",
-   "type": "arrow",
-   "x": 694.0,
-   "y": 780,
-   "width": 66.0,
-   "height": 0,
+   "type": "rectangle",
+   "x": 20.0,
+   "y": 545.0,
+   "width": 280,
+   "height": 90,
    "angle": 0,
    "strokeColor": "#1e1e1e",
    "backgroundColor": "transparent",
@@ -806,39 +806,24 @@
    "frameId": null,
    "index": "a021",
    "roundness": {
-    "type": 2
+    "type": 3
    },
    "seed": 1385751740,
    "version": 1,
    "versionNonce": 1571905674,
    "isDeleted": false,
-   "boundElements": null,
-   "updated": 1793221224867,
+   "boundElements": [],
+   "updated": 1793222066263,
    "link": null,
-   "locked": false,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     66.0,
-     0
-    ]
-   ],
-   "startBinding": null,
-   "endBinding": null,
-   "startArrowhead": null,
-   "endArrowhead": null,
-   "elbowed": false
+   "locked": false
   },
   {
    "id": "inv023",
-   "type": "arrow",
-   "x": 760.0,
-   "y": 780,
-   "width": 0.0,
-   "height": 700,
+   "type": "text",
+   "x": 66.39999999999999,
+   "y": 565.0,
+   "width": 187.20000000000002,
+   "height": 50.0,
    "angle": 0,
    "strokeColor": "#1e1e1e",
    "backgroundColor": "transparent",
@@ -850,40 +835,32 @@
    "groupIds": [],
    "frameId": null,
    "index": "a022",
-   "roundness": {
-    "type": 2
-   },
+   "roundness": null,
    "seed": 414367559,
    "version": 1,
    "versionNonce": 1650349398,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0.0,
-     -700
-    ]
-   ],
-   "startBinding": null,
-   "endBinding": null,
-   "startArrowhead": null,
-   "endArrowhead": null,
-   "elbowed": false
+   "text": "stock-level email,\nassembled by hand",
+   "originalText": "stock-level email,\nassembled by hand",
+   "fontSize": 20,
+   "fontFamily": 5,
+   "textAlign": "center",
+   "verticalAlign": "top",
+   "containerId": null,
+   "autoResize": true,
+   "lineHeight": 1.25
   },
   {
    "id": "inv024",
    "type": "arrow",
-   "x": 760.0,
-   "y": 80,
-   "width": 66.0,
-   "height": 0,
+   "x": 344.0,
+   "y": 440,
+   "width": 38.0,
+   "height": 130,
    "angle": 0,
    "strokeColor": "#1e1e1e",
    "backgroundColor": "transparent",
@@ -903,7 +880,142 @@
    "versionNonce": 1401199066,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
+   "link": null,
+   "locked": false,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     -38.0,
+     130
+    ]
+   ],
+   "startBinding": null,
+   "endBinding": null,
+   "startArrowhead": null,
+   "endArrowhead": "arrow",
+   "elbowed": false
+  },
+  {
+   "id": "inv025",
+   "type": "arrow",
+   "x": 694.0,
+   "y": 780,
+   "width": 66.0,
+   "height": 0,
+   "angle": 0,
+   "strokeColor": "#1e1e1e",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "index": "a024",
+   "roundness": {
+    "type": 2
+   },
+   "seed": 1518818439,
+   "version": 1,
+   "versionNonce": 1867245289,
+   "isDeleted": false,
+   "boundElements": null,
+   "updated": 1793222066263,
+   "link": null,
+   "locked": false,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     66.0,
+     0
+    ]
+   ],
+   "startBinding": null,
+   "endBinding": null,
+   "startArrowhead": null,
+   "endArrowhead": null,
+   "elbowed": false
+  },
+  {
+   "id": "inv026",
+   "type": "arrow",
+   "x": 760.0,
+   "y": 780,
+   "width": 0.0,
+   "height": 700,
+   "angle": 0,
+   "strokeColor": "#1e1e1e",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "index": "a025",
+   "roundness": {
+    "type": 2
+   },
+   "seed": 1236597393,
+   "version": 1,
+   "versionNonce": 615365158,
+   "isDeleted": false,
+   "boundElements": null,
+   "updated": 1793222066263,
+   "link": null,
+   "locked": false,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0.0,
+     -700
+    ]
+   ],
+   "startBinding": null,
+   "endBinding": null,
+   "startArrowhead": null,
+   "endArrowhead": null,
+   "elbowed": false
+  },
+  {
+   "id": "inv027",
+   "type": "arrow",
+   "x": 760.0,
+   "y": 80,
+   "width": 66.0,
+   "height": 0,
+   "angle": 0,
+   "strokeColor": "#1e1e1e",
+   "backgroundColor": "transparent",
+   "fillStyle": "solid",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "index": "a026",
+   "roundness": {
+    "type": 2
+   },
+   "seed": 160460117,
+   "version": 1,
+   "versionNonce": 1046530617,
+   "isDeleted": false,
+   "boundElements": null,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "points": [
@@ -923,7 +1035,7 @@
    "elbowed": false
   },
   {
-   "id": "inv025",
+   "id": "inv028",
    "type": "text",
    "x": 772.0,
    "y": 418.0,
@@ -939,14 +1051,14 @@
    "opacity": 100,
    "groupIds": [],
    "frameId": null,
-   "index": "a024",
+   "index": "a027",
    "roundness": null,
-   "seed": 1518818439,
+   "seed": 1615312436,
    "version": 1,
-   "versionNonce": 1867245289,
+   "versionNonce": 1447763416,
    "isDeleted": false,
    "boundElements": null,
-   "updated": 1793221224867,
+   "updated": 1793222066263,
    "link": null,
    "locked": false,
    "text": "next\ntime",
