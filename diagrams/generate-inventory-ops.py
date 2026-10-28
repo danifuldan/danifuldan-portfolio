@@ -140,8 +140,9 @@ def pipeline():
     # Caption.
     bottom = cys[-1] + H / 2 + 40
     els.append(text(lx - 150, bottom,
-                    "Each monitored SKU sits in exactly one stage. The tool lists what is\n"
-                    "waiting on you at each stage; the dashboard is the union of those lists.",
+                    "A SKU shows in every stage where it has an open order, so one SKU with\n"
+                    "two orders in flight can sit in two stages. Each stage lists what is\n"
+                    "waiting on you; the dashboard gathers those lists.",
                     16, "left", MUTED))
     return doc(els)
 
