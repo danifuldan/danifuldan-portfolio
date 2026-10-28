@@ -137,13 +137,8 @@ def pipeline():
     els += labeled_box(arx, cys[-1], 220, 90, "At risk", "more stock than\ndemand supports", PINK, "dotted")
     els.append(arrow(cx + W / 2 + 4, cys[-1], arx - 110 - 6, cys[-1]))
 
-    # Caption.
-    bottom = cys[-1] + H / 2 + 40
-    els.append(text(lx - 150, bottom,
-                    "A SKU shows in every stage where it has an open order, so one SKU with\n"
-                    "two orders in flight can sit in two stages. Each stage lists what is\n"
-                    "waiting on you; the dashboard gathers those lists.",
-                    16, "left", MUTED))
+    # No caption on the image: the "a SKU can sit in several stages" point
+    # belongs in the page prose next to the diagram, not baked into the PNG.
     return doc(els)
 
 
