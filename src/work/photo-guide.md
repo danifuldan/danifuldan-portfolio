@@ -4,7 +4,7 @@ description: TODO — one sentence, the job plus the turn; this is what the home
 role: TODO
 timeline: 2024
 outcome: TODO
-order: 4
+order: 3
 # Hidden until the body is written: not in the home cards or nav, no page
 # built. To publish, delete the next two lines and fill in the TODOs above.
 eleventyExcludeFromCollections: true
