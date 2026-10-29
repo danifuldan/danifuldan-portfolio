@@ -1,8 +1,8 @@
 ---
-title: Photo Documentation
+title: Photo Guide
 description: TODO — one sentence, the job plus the turn; this is what the home card shows.
 role: TODO
-timeline: TODO
+timeline: 2024
 outcome: TODO
 order: 4
 # Hidden until the body is written: not in the home cards or nav, no page
