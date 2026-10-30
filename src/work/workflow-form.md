@@ -31,7 +31,7 @@ No one was withholding context — the request simply never asked for what fulfi
 
 A fix that depended on people remembering wouldn't hold. It had to live in the request itself, so the right context came along by default.
 
-## The redesign
+## The build
 
 After a particularly rough season of this, I partnered with our Salesforce project manager. **I designed the form's logic and questions. She built it in Salesforce.**
 

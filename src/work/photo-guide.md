@@ -15,7 +15,7 @@ permalink: false
 
 ## The insight
 
-## The redesign
+## The build
 
 ## What changed
 
