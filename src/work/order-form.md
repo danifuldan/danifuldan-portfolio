@@ -10,24 +10,25 @@ thumbnail: /img/workflow-form-thumb.png
 
 ## The workflow and where it broke
 
-My department places orders that get shipped by our warehouse. The customer support team gets the information about what the customer needs and sends it to me.
+My department places orders that get shipped by our third-party warehouse. The customer support team gets the information about what the customer needs and sends it to me.
 
-A few years ago, request volume was high, and the intake faithfully captured what the customer said. If a customer said, *"I want X, Y, and Z,"* the request relayed *"they want X, Y, and Z"* — but it had no field for the context fulfillment actually needed to ship the order.
+A few years ago, request volume was high, and a lot of the intake faithfully captured what the customer said. If a customer said, *"I want X, Y, and Z,"* the request relayed *"they want X, Y, and Z"* — but was often missing context that the fulfillment team needed to ship the order.
 
 I'd get orders that didn't have:
 
 - Who was supposed to receive the equipment
-- What other things they might need to go with it (e.g. required equipment)
+- What other things they might need to go with it (e.g. pre-requisite equipment)
 - The date by when they needed it
 - Whether they needed us to arrange someone to come install the equipment
+- And so on
 
-Recovering the missing pieces meant reconstructing a phone conversation days after it happened — and by then the details often weren't recoverable. Orders would sit. The customer's needs weren't getting met.
+Recovering the missing pieces often meant reconstructing a phone conversation days after it happened — and by then the details often weren't recoverable. Orders would sit, waiting. The customer's needs weren't getting met.
 
-![A workflow diagram of the original process: customer makes a request, CS files it, ops needs more information, then a chain of wait states — waiting to reach the CS rep, then waiting for the customer to clarify — trailing off into limbo with a dotted border.](/img/workflow-form/before.png)
+![A workflow diagram of the original process: customer makes a request, CS files it, ops needs more information, then a chain of wait states — waiting to reach the CS rep, then waiting for the customer to clarify — trailing off into limbo with a dotted border.](/img/order-form/before.png)
 
 ## The insight
 
-No one was withholding context — the request simply never asked for what fulfillment needed.
+No one was withholding context — the submission form never asked for what fulfillment needed.
 
 A fix that depended on people remembering wouldn't hold. It had to live in the request itself, so the right context came along by default.
 
@@ -51,13 +52,13 @@ After launch, there were a few tweaks we made based on use. For example, the con
 
 The overall result was that you couldn't make a request without filling out the form, and you couldn't fill out the form without providing the relevant information.
 
-![A workflow diagram showing the redesigned process: customer makes request, cs fills form (with required type, description, contact info, priority/next event, conditional info, and part reference photos), order shipped or installed.](/img/workflow-form/after.png)
+![A workflow diagram showing the redesigned process: customer makes request, cs fills form (with required type, description, contact info, priority/next event, conditional info, and part reference photos), order shipped or installed.](/img/order-form/after.png)
 
 ## What changed
 
 Once the form rolled out, most orders started going through immediately, because I had the context I needed without having to chase it. CS reps intuitively learned the pattern: *if I don't gather this information now, I'm going to have to go back and get it — or my request won't go through.*
 
-Per Salesforce data at the time, order processing time dropped by ~24%. The form is still in use today.
+Per Salesforce data at the time, order processing time dropped by 24%. The form is still in use today.
 
 The honest limit: an occasional request still comes in as *"ship me one of everything, please."* But the form turned the majority of cases into something relevant and actionable — it gave people an easy way to supply what was needed, and the requests improved accordingly.
 

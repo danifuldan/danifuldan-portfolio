@@ -1,0 +1,3 @@
+# Netlify redirects. The order-form case study was published at the first
+# path from 2026-05-18 (git 1446d6a) until 2026-10-30, and that URL was shared externally.
+/work/workflow-form/  /work/order-form/  301

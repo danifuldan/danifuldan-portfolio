@@ -117,7 +117,7 @@ def dataflow():
 
 # ---------------------------------------------------------------- Diagram 0
 # The "before": the spreadsheet loop. Drawn in the register of the order-form
-# before diagram (2026-10-28 look at src/img/workflow-form/before.png): a few
+# before diagram (2026-10-28 look at src/img/order-form/before.png): a few
 # single-label boxes, green start, pink for the steps that hurt, dotted pink
 # for where things trail off. Rough draft from the brain dumps; Daniel will
 # correct the steps.

@@ -4,6 +4,7 @@ import markdownItAnchor from "markdown-it-anchor";
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/_redirects");
 
   const md = markdownIt({ html: true, linkify: true, typographer: true })
     .use(markdownItAnchor, {
