@@ -42,7 +42,7 @@ def layout():
     for i, (sx, sy) in enumerate(spots, 1):
         els.append(ellipse(sx - 14, sy - 14, 28, 28, "#ffffff"))
         els.append(text(sx, sy - LINE_H * 0.4, str(i), 16, "center"))
-    items = ["Part One", "Part Two", "Part Three"]
+    items = ["Item 1", "Item 2", "Item 3"]
     for i, name in enumerate(items, 1):
         y = gy + gh + 30 + (i - 1) * 34
         els.append(text(cx - 90, y, f"{i}", 20))
