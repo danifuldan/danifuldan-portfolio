@@ -11,7 +11,7 @@ order: 2
 
 My boss and I have a weekly meeting to check in about all of the inventory at our warehouse. We plan orders, check inbound shipments, verify receipts and more. 
 
-For a long while, we worked out of a shared Excel document. It's a pretty difficult tool to use, to be honest. The reporting must be manually exported from the warehouse's web portal (Deposco), so I would have to download the file, open it, copy data, and paste it into the correct sheet. Additions to the SKU list (updates at the warehouse) would throw off the sheet and data without manual adjustments. It was difficult to create and manage more complex relationships between the SKUs. And the stock update email that we started sending out ended up just using a (pretty ugly) direct copy of a pivot table. 
+For a long while, we worked out of a shared Excel document. It's a pretty difficult tool to use, to be honest. The reporting must be manually exported from the warehouse's web portal, so I would have to download the file, open it, copy data, and paste it into the correct sheet. Additions to the SKU list (updates at the warehouse) would throw off the sheet and data without manual adjustments. It was difficult to create and manage more complex relationships between the SKUs. And the stock update email that we started sending out ended up just using a (pretty ugly) direct copy of a pivot table. 
 
 ## The insight
 
