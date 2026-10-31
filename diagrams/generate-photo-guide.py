@@ -27,10 +27,11 @@ def layout():
 
     # Item page: photo, phrase with one linked word, page number.
     cx = page(40, 14)
-    els.append(rect(cx - 120, TOP + 50, 240, 190, GREY))
-    els.append(text(cx, TOP + 50 + 95 - LINE_H * 0.4, "photo", 16, "center", MUTED))
-    els.append(text(cx, TOP + 270, "Shipping box for the", 20, "center"))
-    els.append(text(cx, TOP + 270 + LINE_H, "camera", 20, "center", LINK))
+    els.append(text(cx, TOP + 36, "Equipment Name", 20, "center"))
+    els.append(rect(cx - 120, TOP + 80, 240, 170, GREY))
+    els.append(text(cx, TOP + 80 + 85 - LINE_H * 0.4, "photo", 16, "center", MUTED))
+    els.append(text(cx, TOP + 280, "Shipping box for the", 20, "center"))
+    els.append(text(cx, TOP + 280 + LINE_H, "kit", 20, "center", LINK))
 
     # Kit page: group photo with numbered call-outs, linked contents list.
     cx = page(420, 5)
@@ -41,7 +42,7 @@ def layout():
     for i, (sx, sy) in enumerate(spots, 1):
         els.append(ellipse(sx - 14, sy - 14, 28, 28, "#ffffff"))
         els.append(text(sx, sy - LINE_H * 0.4, str(i), 16, "center"))
-    items = ["camera", "mount", "power supply"]
+    items = ["Part One", "Part Two", "Part Three"]
     for i, name in enumerate(items, 1):
         y = gy + gh + 30 + (i - 1) * 34
         els.append(text(cx - 90, y, f"{i}", 20))
