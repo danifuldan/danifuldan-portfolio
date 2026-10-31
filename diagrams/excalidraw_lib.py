@@ -61,6 +61,10 @@ def rect(x, y, w, h, fill="transparent", stroke="solid"):
                 roundness={"type": 3}, boundElements=[])
 
 
+def ellipse(x, y, w, h, fill="transparent"):
+    return base("ellipse", x, y, w, h, backgroundColor=fill, boundElements=[])
+
+
 def arrow(x1, y1, x2, y2, head="arrow", stroke="solid"):
     return base("arrow", x1, y1, abs(x2 - x1), abs(y2 - y1),
                 points=[[0, 0], [x2 - x1, y2 - y1]], startBinding=None, endBinding=None,

@@ -1,45 +1,51 @@
 #!/usr/bin/env python3
-"""Generate the Photo Guide layout mock: the shape of one page of the
-equipment guide, with grey blocks where the photos go. The real pages show
-the employer's product, so the case study shows the format instead
-(Daniel's call, 2026-10-28). Helpers and style notes live in excalidraw_lib.py."""
+"""Generate the Photo Guide layout mock: two pages of the equipment guide
+side by side, with grey blocks where the photos go. The real pages show the
+employer's product, so the case study shows the format instead.
+
+Page shapes per Daniel (2026-10-30): an item page is a centered photo, a
+short phrase, and a page number; words naming other items are links to
+their pages. A kit page shows the group photo with numbered call-outs and
+a list of the contents, each linked. Helpers live in excalidraw_lib.py."""
 import json, random, sys
 from pathlib import Path
 
-from excalidraw_lib import GREY, LINE_H, MUTED, arrow, doc, labeled_box, rect, text
+from excalidraw_lib import GREY, LINE_H, MUTED, doc, ellipse, rect, text
 
-random.seed(20261028)
+random.seed(20261030)
+LINK = "#1971c2"   # Excalidraw's standard blue, for words that are links
 
 
 def layout():
     els = []
-    L, R, T = 80, 720, 50               # page margins
-    els.append(rect(40, 20, 720, 960, "#ffffff"))
+    PW, PH, TOP = 340, 470, 20
 
-    # Header: item name, page number, rule.
-    els.append(text(L, T, "Item name", 20))
-    els.append(text(R, T + 2, "p. 42", 16, "right", MUTED))
-    els.append(arrow(L, T + 42, R, T + 42, head=None))
+    def page(x, number):
+        els.append(rect(x, TOP, PW, PH, "#ffffff"))
+        els.append(text(x + PW / 2, TOP + PH - 40, str(number), 16, "center", MUTED))
+        return x + PW / 2
 
-    # Photos: one main shot, two angles.
-    def block(x, y, w, h, label):
-        els.append(rect(x, y, w, h, GREY))
-        els.append(text(x + w / 2, y + h / 2 - LINE_H * 0.8 / 2, label, 16, "center", MUTED))
-    block(L, 130, 400, 300, "photo")
-    block(510, 130, 210, 140, "side")
-    block(510, 290, 210, 140, "ports")
+    # Item page: photo, phrase with one linked word, page number.
+    cx = page(40, 14)
+    els.append(rect(cx - 120, TOP + 50, 240, 190, GREY))
+    els.append(text(cx, TOP + 50 + 95 - LINE_H * 0.4, "photo", 16, "center", MUTED))
+    els.append(text(cx, TOP + 270, "Shipping box for the", 20, "center"))
+    els.append(text(cx, TOP + 270 + LINE_H, "camera", 20, "center", LINK))
 
-    # Description: plain terms, then what it does and where it goes.
-    els.append(text(L, 470, "What it is, in plain terms.", 20))
-    els.append(text(L, 505, "What it does, where it goes,\nand what it plugs into.", 16, "left", MUTED))
-
-    # Relationships: each row links to another page of the guide.
-    els.append(text(L, 600, "Related", 20))
-    rows = [("works with", "item · p. 17"), ("ships with", "item · p. 23"), ("part of kit", "kit · p. 5")]
-    for i, (label, link) in enumerate(rows):
-        y = 660 + i * 70
-        els.append(text(L, y + 2, label, 16, "left", MUTED))
-        els += labeled_box(390, y + 12, 260, 44, link)
+    # Kit page: group photo with numbered call-outs, linked contents list.
+    cx = page(420, 5)
+    els.append(text(cx, TOP + 36, "Contents of the kit", 20, "center"))
+    gx, gy, gw, gh = cx - 140, TOP + 80, 280, 170
+    els.append(rect(gx, gy, gw, gh, GREY))
+    spots = [(gx + 50, gy + 40), (gx + 160, gy + 30), (gx + 200, gy + 110)]
+    for i, (sx, sy) in enumerate(spots, 1):
+        els.append(ellipse(sx - 14, sy - 14, 28, 28, "#ffffff"))
+        els.append(text(sx, sy - LINE_H * 0.4, str(i), 16, "center"))
+    items = ["camera", "mount", "power supply"]
+    for i, name in enumerate(items, 1):
+        y = gy + gh + 30 + (i - 1) * 34
+        els.append(text(cx - 90, y, f"{i}", 20))
+        els.append(text(cx - 60, y, name, 20, "left", LINK))
     return doc(els)
 
 

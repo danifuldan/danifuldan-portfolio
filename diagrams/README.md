@@ -22,7 +22,8 @@ as the order-form diagrams (drawn ~685 wide) in the ~720px case-study column.
   Monitor stages, with At Risk as the overstock side state.
 - `inventory-ops-dataflow.excalidraw` — reports in, local database, working
   pages, outputs; dashed boundary = one machine.
-- `photo-guide-layout.excalidraw` — one page of the equipment guide as a
+- `photo-guide-layout.excalidraw` — two pages of the equipment guide (an item
+  page and a kit page) as a
   layout mock with grey photo blocks; the real pages show the product.
 - `excalidraw_lib.py` — shared element helpers and style constants.
 - `generate-inventory-ops.py`, `generate-photo-guide.py` — the scripts that
